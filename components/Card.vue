@@ -72,7 +72,6 @@ const isNotHovering = () => {
         border: 1px solid white;
         border-radius: 8px;
         height: 0px;
-        display: none;
         opacity: 0;
         transition: opacity 0.25s ease-in-out;
     }
