@@ -17,7 +17,7 @@
                 </p>
             </div>
 
-            <div class="exploreButton">
+            <div v-if="id !== 0" class="exploreButton">
                 <p class="exploreButtonText">
                     {{ 'Explore More' }}
                 </p>
@@ -56,23 +56,39 @@ const isNotHovering = () => {
 
     .exploreButton {
         padding: 12px;
-        margin-top: 50px;
+        margin-top: 30px;
         border: 1px solid white;
         border-radius: 8px;
+        height: 0px;
         opacity: 0;
+        transition: opacity 0.25s ease-in-out;
+    }
+
+    .description {
+        font-size: 14px;
+        max-width: 350px;
+        font-weight: 400;
+        opacity: 0;
+        height: 0px;
+        color: white;
+        letter-spacing: 1px;
         transition: opacity 0.25s ease-in-out;
     }
 }
 
-.mainContainer :hover {
-    .exploreButton {
-        opacity: 1;
+@media only screen and (min-width: 768px) {
+    .mainContainer {
+        .description {
+            font-size: 16px;
+            max-width: 650px;
+        }
     }
 }
 
 .mainContainer :hover {
-    .container {
-        top: 50%;
+    .exploreButton, .description {
+        height: fit-content;
+        opacity: 1;
     }
 }
 
@@ -85,7 +101,7 @@ const isNotHovering = () => {
     align-items: center;
     justify-content: center;
     gap: 18px;
-    top: 60%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -113,6 +129,8 @@ img {
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
     gap: 20px;
 }
 
@@ -120,14 +138,6 @@ img {
     text-transform: capitalize;
     font-size: 32px;
     font-weight: 900;
-    color: white;
-    letter-spacing: 1px;
-}
-
-.description {
-    font-size: 14px;
-    max-width: 300px;
-    font-weight: 400;
     color: white;
     letter-spacing: 1px;
 }
