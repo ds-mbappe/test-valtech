@@ -22,6 +22,16 @@
                     {{ 'Explore More' }}
                 </p>
             </div>
+
+            <div v-if="authorFirstname || authorLastname" class="authorDiv">
+                <p class="unsplashAuthor">
+                    {{ 'Photo by ' }}
+
+                    <a :href="`https://unsplash.com/@${authorFirstname}?utm_source=test-valtech&utm_medium=referral`">
+                        {{ (authorFirstname || '') + ' ' + (authorLastname || '') }}
+                    </a>
+                </p>
+            </div>
         </div>
     </div>
 </template>
@@ -33,6 +43,8 @@ defineProps({
     title: { type: String, default: '' },
     description: { type: String, default: '' },
     background: { type: String, default: '' },
+    authorFirstname: { type: String, default: '' },
+    authorLastname: { type: String, default: '' },
 })
 
 const hovering = ref(false)
@@ -60,6 +72,7 @@ const isNotHovering = () => {
         border: 1px solid white;
         border-radius: 8px;
         height: 0px;
+        display: none;
         opacity: 0;
         transition: opacity 0.25s ease-in-out;
     }
@@ -145,5 +158,19 @@ img {
 .exploreButtonText {
     color: white;
     font-weight: 700;
+}
+
+.authorDiv {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.unsplashAuthor {
+    font-size: 10px;
+    font-weight: 400;
+    color: white;
+    letter-spacing: 1px;
+    text-decoration: underline;
 }
 </style>
